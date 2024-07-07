@@ -58,7 +58,6 @@ if __name__ == '__main__':
     
     file_list = sorted(os.listdir(root_path))
     for f in file_list:
-        print(f'Processing: {f} ...')
         m_list = sorted(os.listdir(os.path.join(root_path, f)))
         len_m = len(m_list)
         for i in range(len_m-1):
