@@ -36,6 +36,7 @@ run_inference() {
         local sub_dir=$2
         local mask_sub_dir=$3
         local video_name=$4
+        mkdir -p "results/$video_name"
         CUDA_VISIBLE_DEVICES=$gpu_id python inference_propainter.py --video "$sub_dir" --mask "$mask_sub_dir" --output "results/$video_name" --subvideo_length 100 --save_fps 30
     }
 
