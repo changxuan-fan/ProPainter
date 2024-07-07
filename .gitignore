@@ -128,4 +128,3 @@ results_eval/
 results/
 *debug*
 *old*
-*.sh
