@@ -74,7 +74,7 @@ run_inference() {
                     done
                     # Check if any GPU has finished its task
                     for ((i=0; i<NUM_GPUS; i++)); do
-                        if [[ -n "${gpu_pids[i]}" && ! -e /proc/${gpu_pids[i]} ]]; then
+                        if [[ -n "${gpu_pids[i]}" && ! -e /proc/"${gpu_pids[i]}" ]]; then
                             gpu_available[i]=1
                         fi
                     done
