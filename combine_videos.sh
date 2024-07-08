@@ -51,7 +51,7 @@ for SUBDIR in "$PARENT_DIR"/*; do
 
         # Assign the command to the appropriate GPU
         gpu_index=$((subdir_index % num_gpus))
-        gpu_commands[$gpu_index]+="CUDA_VISIBLE_DEVICES=$gpu_index ffmpeg -y -vsync 0 -hwaccel nvdec -hwaccel_output_format cuda -f concat -safe 0 -i \"$TEMP_FILE\" -c:v h264_nvenc \"$OUTPUT_DIR/$SUBDIR_NAME.mp4\"; "
+        gpu_commands[$gpu_index]+="CUDA_VISIBLE_DEVICES=$gpu_index ffmpeg -y -vsync 0 -hwaccel nvdec -f concat -safe 0 -i \"$TEMP_FILE\"  \"$OUTPUT_DIR/$SUBDIR_NAME.mp4\"; "
 
         subdir_index=$((subdir_index + 1))
     fi
