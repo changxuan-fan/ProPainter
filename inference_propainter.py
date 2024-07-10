@@ -251,7 +251,7 @@ if __name__ == '__main__':
 
     # for saving the masked frames or video
     masked_frame_for_save = []
-    for i in range(len(frames)):
+    for i in tqdm(range(len(frames)), desc="Saving Masked Frames or Videos"):
         mask_ = np.expand_dims(np.array(masks_dilated[i]),2).repeat(3, axis=2)/255.
         img = np.array(frames[i])
         green = np.zeros([h, w, 3])
@@ -343,7 +343,7 @@ if __name__ == '__main__':
         if flow_length > args.subvideo_length:
             pred_flows_f, pred_flows_b = [], []
             pad_len = 5
-            for f in range(0, flow_length, args.subvideo_length):
+            for f in tqdm(range(0, flow_length, args.subvideo_length), desc="Completing Flow"):
                 s_f = max(0, f - pad_len)
                 e_f = min(flow_length, f + args.subvideo_length + pad_len)
                 pad_len_s = max(0, f) - s_f
@@ -415,7 +415,7 @@ if __name__ == '__main__':
         ref_num = -1
 
     # ---- feature propagation + transformer ----
-    for f in range(0, video_length, neighbor_stride):
+    for f in tqdm(range(0, video_length, neighbor_stride), desc="Feature Propagation..."):
         neighbor_ids = [
             i for i in range(max(0, f - neighbor_stride),
                                 min(video_length, f + neighbor_stride + 1))

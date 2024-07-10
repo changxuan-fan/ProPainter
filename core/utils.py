@@ -26,7 +26,6 @@ def read_dirnames_under_root(root_dir):
         name for i, name in enumerate(sorted(os.listdir(root_dir)))
         if os.path.isdir(os.path.join(root_dir, name))
     ]
-    print(f'Reading directories under {root_dir}, num: {len(dirnames)}')
     return dirnames
 
 
